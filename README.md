@@ -1,28 +1,28 @@
-<h1 align="center" style="font-size: 6.5em;">📈 MOMENTUM TRADING BOT 🤖</h1>
+<h1 align="center">📈 MOMENTUM TRADING BOT 🤖</h1>
 <h4 align="center">An automated script designed to execute a configurable momentum-based trading strategy.</h4>
 
-<div align="center" style="margin-top: 15px; margin-bottom: 25px;">
+<div align="center">
 
-| | | |
-| :---: | :---: | :---: |
-| <img src="[https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge](https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge)" alt="Strategy Used"> | <img src="[https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python](https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python)" alt="Python Version"> | <img src="[https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge](https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge)" alt="Execution Method"> |
+| | | | |
+| :---: | :---: | :---: | :---: |
+| <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge" alt="Execution Method"> | <img src="https://img.shields.io/github/license/google-gemini/gemini-cli?style=for-the-badge&label=License" alt="License"> |
 
 </div>
 
 ---
 
-<h2 align="center" style="font-size: 2.25em;">✨ Key Features</h2>
+<h2 align="center">✨ Key Features</h2>
 
 This script provides a powerful and secure way to automate your trading logic directly from your system.
 
-* <span style="font-size: 1.5em;">**🚀 Strategy Implementation:** Uses a **Simple Moving Average (SMA) crossover** on historical data to generate clear BUY/SELL signals.</span>
-* <span style="font-size: 1.5em;">**📊 Data Handling:** Leverages the **Pandas** library for efficient, fast processing and analysis of time-series financial data.</span>
-* <span style="font-size: 1.5em;">**🔌 Secure Execution:** Executes trades by utilizing your configured **`gemini-cli`** via a subprocess call, keeping sensitive broker logic separate.</span>
-* <span style="font-size: 1.5em;">**⏰ Scheduled Operation:** Designed for **single-run execution**, making it perfect for reliable scheduling with tools like `cron`.</span>
+* **🚀 Strategy Implementation:** Uses a **Simple Moving Average (SMA) crossover** on historical data to generate clear BUY/SELL signals.
+* **📊 Data Handling:** Leverages the **Pandas** library for efficient, fast processing and analysis of time-series financial data.
+* **🔌 Secure Execution:** Executes trades by utilizing your configured **`gemini-cli`** via a subprocess call, keeping sensitive broker logic separate.
+* **⏰ Scheduled Operation:** Designed for **single-run execution**, making it perfect for reliable scheduling with tools like `cron`.
 
 ---
 
-<h2 align="center" style="font-size: 2.25em;">📝 Getting Started</h2>
+<h2 align="center">📝 Getting Started</h2>
 
 ### 📦 Prerequisites
 
@@ -36,7 +36,7 @@ Before deployment, ensure you have the following installed and configured:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/google-gemini/gemini-cli.git 
+    git clone [https://github.com/google-gemini/gemini-cli.git](https://github.com/google-gemini/gemini-cli.git) 
     cd gemini-cli
     ```
 
@@ -60,7 +60,7 @@ All sensitive keys and trading parameters should be stored as environment variab
 
 ---
 
-<h2 align="center" style="font-size: 2.25em;">💡 Usage</h2>
+<h2 align="center">💡 Usage</h2>
 
 ### Running the Bot
 
@@ -71,10 +71,12 @@ python3 Momentum_bot.py
 Automation
 Set up a cron job on your server to run the script automatically at desired intervals (e.g., daily before market open).
 
+Example Cron Entry:
+
 Bash
 
 0 9 * * 1-5 /usr/bin/python3 /path/to/Momentum_bot.py
-<h2 align="center" style="font-size: 2.25em;">🤝 Contribution</h2>
+<h2 align="center">🤝 Contribution</h2>
 
 Contributions are welcome! If you have suggestions for new features, bug fixes, or strategy improvements, please follow these steps:
 
@@ -88,7 +90,7 @@ Push to the branch (git push origin feature/NewIndicator).
 
 Open a Pull Request.
 
-<h2 align="center" style="font-size: 2.25em;">✉️ Contact & Connect</h2>
+<h2 align="center">✉️ Contact & Connect</h2>
 
 GitHub Profile: @careed23
 
@@ -96,6 +98,6 @@ Email: tat2creed@gmail.com
 
 LinkedIn: Colten Reed
 
-<h2 align="center" style="font-size: 2.25em;">⚖️ License</h2>
+<h2 align="center">⚖️ License</h2>
 
-Distributed under the MIT License. (The full license file should be included in your repository.)
+Distributed under the MIT License. See LICENSE for more information.
