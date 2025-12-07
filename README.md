@@ -35,28 +35,28 @@ Before deployment, ensure you have the following installed and configured:
 ### ⚙️ Installation
 
 1.  **Clone the Repository:**
-    ```bash
+    bash
     git clone [https://github.com/google-gemini/gemini-cli.git](https://github.com/google-gemini/gemini-cli.git) 
     cd gemini-cli
-    ```
+    
 
 2.  **Install Python Dependencies:**
-    ```bash
+    bash
     pip install pandas requests python-dotenv
-    ```
+    
 
 ### 🔑 Configuration
 
 All sensitive keys and trading parameters should be stored as environment variables for security.
 
 1.  **Create a `.env` file** in the project root:
-    ```
+    
     ALPACA_API_KEY="YOUR_KEY"
     ALPACA_SECRET_KEY="YOUR_SECRET"
     SMA_SHORT=50
     SMA_LONG=200
     SYMBOL="BTC/USD"
-    ```
+    
 
 ---
 
@@ -66,16 +66,11 @@ All sensitive keys and trading parameters should be stored as environment variab
 
 Run the script directly to execute the entire sequence: fetch data, calculate the signal, and place an order if a cross is detected.
 
-```bash
+bash
 python3 Momentum_bot.py
 Automation
 Set up a cron job on your server to run the script automatically at desired intervals (e.g., daily before market open).
 
-Example Cron Entry:
-
-Bash
-
-0 9 * * 1-5 /usr/bin/python3 /path/to/Momentum_bot.py
 <h2 align="center">🤝 Contribution</h2>
 
 Contributions are welcome! If you have suggestions for new features, bug fixes, or strategy improvements, please follow these steps:
