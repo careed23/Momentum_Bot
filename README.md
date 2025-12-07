@@ -1,11 +1,11 @@
-<h1 align="center">📈 MOMENTUM TRADING BOT 🤖</h1>
+<h1 align="center" style="font-size: 3.25em;">📈 MOMENTUM TRADING BOT 🤖</h1>
 <h4 align="center">An automated script designed to execute a configurable momentum-based trading strategy.</h4>
 
 <div align="center">
 
-| | | | |
-| :---: | :---: | :---: | :---: |
-| <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge" alt="Execution Method"> | <img src="https://img.shields.io/github/license/google-gemini/gemini-cli?style=for-the-badge&label=License" alt="License"> |
+| | | |
+| :---: | :---: | :---: |
+| <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-for-the-badge" alt="Execution Method"> |
 
 </div>
 
