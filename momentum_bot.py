@@ -2,36 +2,37 @@ import os
 import requests
 import pandas as pd
 import subprocess
-import time
 from datetime import datetime, timedelta
 
-# --- CONFIGURATION ---
+# --- CONFIGURATION (SCALPING) ---
 SYMBOL = "BTC/USD"
-TIMEFRAME = "5Min"
-SMA_SHORT = 50
-SMA_LONG = 100
+TIMEFRAME = "1Min"  # Min feasible timeframe
+VOLATILITY_THRESHOLD = 0.002 # 0.2% (as a decimal)
+
+# Risk/Reward Settings (3:1 Ratio)
+RISK_PERCENT = 0.002  # 0.2% Stop Loss
+REWARD_PERCENT = 0.006 # 0.6% Take Profit (3x Risk)
+TSL_PERCENT = 0.0005 # 0.05% trail to simulate granular 5-tick TSL
 
 # Load Keys (Variables are accessed inside functions for cleaner subprocess handling)
 BASE_URL = "https://data.alpaca.markets/v1beta3/crypto/us/bars"
 
 def get_historical_data():
     headers = {
-        # Keys must be exported in the shell environment (e.g., in ~/env)
         "APCA-API-KEY-ID": os.getenv("ALPACA_API_KEY"),
         "APCA-API-SECRET-KEY": os.getenv("ALPACA_SECRET_KEY")
     }
     
-    # --- FIX: Calculate Start Date for 5Min Timeframe ---
-    # We request 48 hours (2 days) of data to ensure we have enough for the 200 period SMA.
-    start_time = datetime.now() - timedelta(hours=48)
-    start_time_rfc3339 = start_time.isoformat() + "Z" # Format correctly for API
+    # We only need the last 2 candles for a 1-minute check.
+    start_time = datetime.now() - timedelta(minutes=5) # 5 minutes is a safe buffer
+    start_time_rfc3339 = start_time.isoformat() + "Z"
     
     params = {
         "symbols": SYMBOL,
         "timeframe": TIMEFRAME,
         "start": start_time_rfc3339,
-        "limit": 1000, 
-        "sort": "desc" 
+        "limit": 5, 
+        "sort": "asc" 
     }
     
     try:
@@ -44,8 +45,8 @@ def get_historical_data():
             
             print(f"📡 Retrieved {len(df)} candles for {SYMBOL} ({TIMEFRAME})")
             
-            # Since we requested 48 hours of data, we use the most recent 250 periods for the cross calculation
-            df = df.tail(SMA_LONG + 50).reset_index(drop=True) 
+            # Use the two most recent candles for analysis
+            df = df.tail(2).reset_index(drop=True) 
             return df
         else:
             print(f"❌ Error: No data found. API Response: {data}")
@@ -55,46 +56,46 @@ def get_historical_data():
         return None
 
 def calculate_signal(df):
-    # Safety Check: We need at least 200 rows
-    if len(df) < SMA_LONG:
-        print(f"⚠️ Not enough data! Need {SMA_LONG} periods, but only got {len(df)}.")
+    # Safety Check: We need exactly 2 rows for comparison
+    if len(df) < 2:
         return "HOLD"
 
-    # Calculate Moving Averages
-    df['SMA_50'] = df['c'].rolling(window=SMA_SHORT).mean()
-    df['SMA_100'] = df['c'].rolling(window=SMA_LONG).mean()
+    current_close = df.iloc[-1]['c']
+    prev_close = df.iloc[-2]['c']
     
-    # Get the last two completed candles (the critical crossover period)
-    last_row = df.iloc[-1]
-    prev_row = df.iloc[-2]
-    current_price = last_row['c']
+    # Calculate the percentage change between the current and previous candle
+    percent_change = (current_close - prev_close) / prev_close
     
-    print(f"📊 {SYMBOL} Price: ${current_price:.2f} | SMA 50: {last_row['SMA_50']:.2f} | SMA 100: {last_row['SMA_100']:.2f}")
+    print(f"📊 {TIMEFRAME} Change: {percent_change*100:.3f}% (Threshold: {VOLATILITY_THRESHOLD*100:.2f}%)")
 
-    # Golden Cross Logic (Buy when 50 crosses ABOVE 00)
-    if prev_row['SMA_50'] < prev_row['SMA_100'] and last_row['SMA_50'] > last_row['SMA_100']:
+    if percent_change >= VOLATILITY_THRESHOLD:
         return "BUY"
-    # Death Cross Logic (Sell when 50 crosses BELOW 200)
-    elif prev_row['SMA_50'] > prev_row['SMA_100'] and last_row['SMA_50'] < last_row['SMA_100']:
+    elif percent_change <= -VOLATILITY_THRESHOLD:
         return "SELL"
     else:
         return "HOLD"
 
 def execute_trade_with_gemini(action):
-    # Use a safe trailing distance, e.g., 2%
-    TRAILING_PERCENT = "2%"
-    
     print(f"🚀 SIGNAL DETECTED: {action}!")
     
+    # --- COMPLEX BRACKET ORDER LOGIC ---
+    # We ask the AI to place a complex OCO/Bracket order with the required R:R and TSL.
+    
     if action == "BUY":
-        # Request the AI to place a complex order: Trailing Stop
-        prompt = (f"Place a market order to buy 1 unit of {SYMBOL} and "
-                  f"immediately attach a Trailing Stop Loss order with a trail "
-                  f"distance of {TRAILING_PERCENT}."
+        # The prompt is complex to enforce the R:R and TSL rules.
+        prompt = (f"Place a Bracket Order to buy 1 unit of {SYMBOL}. "
+                  f"Set the profit limit (take profit) to {REWARD_PERCENT*100:.2f}% "
+                  f"(3x risk) and the stop loss to {RISK_PERCENT*100:.2f}%. "
+                  f"Also, activate a trailing stop loss with a {TSL_PERCENT*100:.2f}% trail "
+                  f"to act as a break-even stop, activated immediately."
         )
     elif action == "SELL":
-        # On a Death Cross, we exit the position entirely (closing the long trade).
-        prompt = f"Sell all my {SYMBOL} positions at market price (Trend Reversal Exit)."
+        # For a short trade (selling first), the R:R is inverted.
+        prompt = (f"Place a Bracket Order to sell 1 unit of {SYMBOL}. "
+                  f"Set the profit limit to {REWARD_PERCENT*100:.2f}% and the stop loss to {RISK_PERCENT*100:.2f}%. "
+                  f"Also, activate a trailing stop loss with a {TSL_PERCENT*100:.2f}% trail "
+                  f"to act as a break-even stop, activated immediately."
+        )
     else:
         return
 
@@ -104,13 +105,12 @@ def execute_trade_with_gemini(action):
             ["gemini", "-p", prompt, "--yolo", "-m", "gemini-2.5-flash-lite"],
             check=True
         )
-        print(f"✅ Trade sent: {action} order placed with {TRAILING_PERCENT} Trailing Stop.")
+        print(f"✅ Trade sent: {action} order placed with 3:1 R:R and Trailing Stop.")
     except Exception as e:
-        # This catches errors like failure to connect to the MCP server
         print(f"❌ Failed to execute trade via Gemini: {e}")
 
 # --- SINGLE RUN EXECUTION ---
-print("🛡️ Trend Following Bot Running (Single Execution)...")
+print("🛡️ Volatility Scalping Bot Running (Single Execution)...")
 df = get_historical_data()
 
 if df is not None:
