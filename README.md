@@ -68,3 +68,36 @@ Run the script directly to execute the entire sequence: fetch data, calculate th
 
 ```bash
 python3 Momentum_bot.py
+Automation
+Set up a cron job on your server to run the script automatically at desired intervals (e.g., daily before market open).
+
+Example Cron Entry:
+
+Bash
+
+0 9 * * 1-5 /usr/bin/python3 /path/to/Momentum_bot.py
+<h2 align="center" style="font-size: 2.25em;">🤝 Contribution</h2>
+
+Contributions are welcome! If you have suggestions for new features, bug fixes, or strategy improvements, please follow these steps:
+
+Fork the repository.
+
+Create your feature branch (git checkout -b feature/NewIndicator).
+
+Commit your changes (git commit -m 'Add new indicator calculation').
+
+Push to the branch (git push origin feature/NewIndicator).
+
+Open a Pull Request.
+
+<h2 align="center" style="font-size: 2.25em;">✉️ Contact & Connect</h2>
+
+GitHub Profile: @careed23
+
+Email: tat2creed@gmail.com
+
+LinkedIn: Colten Reed
+
+<h2 align="center" style="font-size: 2.25em;">⚖️ License</h2>
+
+Distributed under the MIT License. (The full license file should be included in your repository.)
