@@ -3,7 +3,7 @@
 
 <div align="center">
 
-| Strategy | Dependencies | Execution Method | License |
+| | | | |
 | :---: | :---: | :---: | :---: |
 | <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge" alt="Execution Method"> | <img src="https://img.shields.io/github/license/google-gemini/gemini-cli?style=for-the-badge&label=License" alt="License"> |
 
@@ -68,33 +68,3 @@ Run the script directly to execute the entire sequence: fetch data, calculate th
 
 ```bash
 python3 Momentum_bot.py
-Automation
-Set up a cron job on your server to run the script automatically at desired intervals (e.g., daily before market open).
-
-Example Cron Entry:
-
-Bash
-
-0 9 * * 1-5 /usr/bin/python3 /path/to/Momentum_bot.py
-🤝 Contribution
-Contributions are welcome! If you have suggestions for new features, bug fixes, or strategy improvements, please follow these steps:
-
-Fork the repository.
-
-Create your feature branch (git checkout -b feature/NewIndicator).
-
-Commit your changes (git commit -m 'Add new indicator calculation').
-
-Push to the branch (git push origin feature/NewIndicator).
-
-Open a Pull Request.
-
-✉️ Contact & Connect
-GitHub Profile: @careed23
-
-Email: tat2creed@gmail.com
-
-LinkedIn: Colten Reed
-
-⚖️ License
-Distributed under the MIT License. See LICENSE for more information.
