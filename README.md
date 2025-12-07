@@ -1,28 +1,28 @@
-<h1 align="center" style="font-size: 3.25em;">📈 MOMENTUM TRADING BOT 🤖</h1>
+<h1 align="center" style="font-size: 6.5em;">📈 MOMENTUM TRADING BOT 🤖</h1>
 <h4 align="center">An automated script designed to execute a configurable momentum-based trading strategy.</h4>
 
-<div align="center">
+<div align="center" style="margin-top: 15px; margin-bottom: 25px;">
 
 | | | |
 | :---: | :---: | :---: |
-| <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-for-the-badge" alt="Execution Method"> |
+| <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge" alt="Execution Method"> |
 
 </div>
 
 ---
 
-<h2 align="center">✨ Key Features</h2>
+<h2 align="center" style="font-size: 2.25em;">✨ Key Features</h2>
 
 This script provides a powerful and secure way to automate your trading logic directly from your system.
 
-* **🚀 Strategy Implementation:** Uses a **Simple Moving Average (SMA) crossover** on historical data to generate clear BUY/SELL signals.
-* **📊 Data Handling:** Leverages the **Pandas** library for efficient, fast processing and analysis of time-series financial data.
-* **🔌 Secure Execution:** Executes trades by utilizing your configured **`gemini-cli`** via a subprocess call, keeping sensitive broker logic separate.
-* **⏰ Scheduled Operation:** Designed for **single-run execution**, making it perfect for reliable scheduling with tools like `cron`.
+* <span style="font-size: 1.5em;">**🚀 Strategy Implementation:** Uses a **Simple Moving Average (SMA) crossover** on historical data to generate clear BUY/SELL signals.</span>
+* <span style="font-size: 1.5em;">**📊 Data Handling:** Leverages the **Pandas** library for efficient, fast processing and analysis of time-series financial data.</span>
+* <span style="font-size: 1.5em;">**🔌 Secure Execution:** Executes trades by utilizing your configured **`gemini-cli`** via a subprocess call, keeping sensitive broker logic separate.</span>
+* <span style="font-size: 1.5em;">**⏰ Scheduled Operation:** Designed for **single-run execution**, making it perfect for reliable scheduling with tools like `cron`.</span>
 
 ---
 
-<h2 align="center">📝 Getting Started</h2>
+<h2 align="center" style="font-size: 2.25em;">📝 Getting Started</h2>
 
 ### 📦 Prerequisites
 
@@ -60,7 +60,7 @@ All sensitive keys and trading parameters should be stored as environment variab
 
 ---
 
-<h2 align="center">💡 Usage</h2>
+<h2 align="center" style="font-size: 2.25em;">💡 Usage</h2>
 
 ### Running the Bot
 
