@@ -1,27 +1,24 @@
-<h1 align="center" style="font-size: 3em;">📈 Momentum Trading Bot</h1>
-<h4 align="center">An automated script designed to execute momentum-based trading strategies.</h4>
+<h1 align="center">📈 MOMENTUM TRADING BOT 🤖</h1>
+<h4 align="center">An automated script designed to execute a configurable momentum-based trading strategy.</h4>
 
----
+<div align="center">
 
-## 🛡️ Project Status & Performance Badges
+| Strategy | Dependencies | Execution Method | License |
+| :---: | :---: | :---: | :---: |
+| <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge" alt="Execution Method"> | <img src="https://img.shields.io/github/license/google-gemini/gemini-cli?style=for-the-badge&label=License" alt="License"> |
 
-| Status | Badge | Description |
-| :--- | :--- | :--- |
-| **Strategy** | <img src="https://img.shields.io/badge/Strategy-Momentum%20Filter-blueviolet?style=for-the-badge" alt="Strategy Used"> | Indicates the core trading methodology (SMA Crossover). |
-| **License** | <img src="https://img.shields.io/github/license/google-gemini/gemini-cli?style=for-the-badge&label=License" alt="License"> | Project license information. |
-| **Dependencies** | <img src="https://img.shields.io/badge/Python-3.8%2B-informational?style=for-the-badge&logo=python" alt="Python Version"> | Required Python environment. |
-| **Execution** | <img src="https://img.shields.io/badge/Execution-Gemini%20CLI%20Subprocess-brightgreen?style=for-the-badge" alt="Execution Method"> | How trade orders are handled. |
+</div>
 
 ---
 
 ## ✨ Key Features
 
-This bot is engineered for precision and speed, utilizing a classic trend-following momentum strategy.
+This script provides a powerful and secure way to automate your trading logic directly from your system.
 
-* **🚀 Strategy Implementation:** Uses a configurable Simple Moving Average (SMA) crossover logic to generate BUY/SELL signals.
-* **📊 Data Handling:** Uses `pandas` to efficiently fetch and analyze historical price data.
-* **🔌 Trade Execution:** Integrates directly with your `gemini-cli` via `subprocess` for secure and fast order placement.
-* **⏰ Scheduled Execution:** Designed for single-run execution, perfect for deployment using `cron` or other scheduling services.
+* **🚀 Strategy Implementation:** Uses a **Simple Moving Average (SMA) crossover** on historical data to generate clear BUY/SELL signals.
+* **📊 Data Handling:** Leverages the **Pandas** library for efficient, fast processing and analysis of time-series financial data.
+* **🔌 Secure Execution:** Executes trades by utilizing your configured **`gemini-cli`** via a subprocess call, keeping sensitive broker logic separate.
+* **⏰ Scheduled Operation:** Designed for **single-run execution**, making it perfect for reliable scheduling with tools like `cron`.
 
 ---
 
@@ -29,30 +26,30 @@ This bot is engineered for precision and speed, utilizing a classic trend-follow
 
 ### 📦 Prerequisites
 
-Ensure your environment is set up with the following:
+Before deployment, ensure you have the following installed and configured:
 
 * **Python:** Version 3.8 or higher.
-* **API Access:** Valid Alpaca (or similar) API keys and secrets for data fetching.
-* **`gemini-cli`:** Your custom command-line tool must be installed and configured in your system path.
+* **API Access:** Valid **Broker/Data Provider API Keys** (e.g., Alpaca) for fetching market data.
+* **`gemini-cli`:** Must be installed and accessible in your system's PATH to execute trades.
 
 ### ⚙️ Installation
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/google-gemini/gemini-cli.git](https://github.com/google-gemini/gemini-cli.git) # Adjust if your repo name is different
+    git clone [https://github.com/google-gemini/gemini-cli.git](https://github.com/google-gemini/gemini-cli.git) 
     cd gemini-cli
     ```
 
-2.  **Install Dependencies:**
+2.  **Install Python Dependencies:**
     ```bash
     pip install pandas requests python-dotenv
     ```
 
 ### 🔑 Configuration
 
-Set your sensitive keys and trading parameters as environment variables for security.
+All sensitive keys and trading parameters should be stored as environment variables for security.
 
-1.  **Create a `.env` file** in the project root and add your keys:
+1.  **Create a `.env` file** in the project root:
     ```
     ALPACA_API_KEY="YOUR_KEY"
     ALPACA_SECRET_KEY="YOUR_SECRET"
@@ -65,9 +62,39 @@ Set your sensitive keys and trading parameters as environment variables for secu
 
 ## 💡 Usage
 
-### Running the Bot (Single Execution)
+### Running the Bot
 
-Execute the script directly to perform a single run, which fetches data, checks the current momentum signal, and executes a trade if a cross is detected.
+Run the script directly to execute the entire sequence: fetch data, calculate the signal, and place an order if a cross is detected.
 
 ```bash
 python3 Momentum_bot.py
+Automation
+Set up a cron job on your server to run the script automatically at desired intervals (e.g., daily before market open).
+
+Example Cron Entry:
+
+Bash
+
+0 9 * * 1-5 /usr/bin/python3 /path/to/Momentum_bot.py
+🤝 Contribution
+Contributions are welcome! If you have suggestions for new features, bug fixes, or strategy improvements, please follow these steps:
+
+Fork the repository.
+
+Create your feature branch (git checkout -b feature/NewIndicator).
+
+Commit your changes (git commit -m 'Add new indicator calculation').
+
+Push to the branch (git push origin feature/NewIndicator).
+
+Open a Pull Request.
+
+✉️ Contact & Connect
+GitHub Profile: @careed23
+
+Email: tat2creed@gmail.com
+
+LinkedIn: Colten Reed
+
+⚖️ License
+Distributed under the MIT License. See LICENSE for more information.
